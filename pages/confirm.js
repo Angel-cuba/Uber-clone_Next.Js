@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import tw from 'tailwind-styled-components';
 import Map from '../components/Map';
+import RideSelector from '../components/RideSelector';
+//Location for query address
+import { useRouter } from 'next/router';
 
 const Confirm = () => {
+	const router = useRouter();
+	const { pickup, destination } = router.query;
+
 	const [pickupCoordinates, setPickupCoordinates] = useState();
 	const [destinationCoordinates, setDestinationCoordinates] = useState();
 
-	const GetPickUpCoordinates = () => {
-		const pickup = 'Santa Monica';
-
+	const GetPickUpCoordinates = (pickup) => {
 		//fetch to call api
 		fetch(
 			`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` +
@@ -22,9 +26,7 @@ const Confirm = () => {
 			.then((data) => setPickupCoordinates(data.features[0].center));
 	};
 
-	const GetDropOffCoordinates = () => {
-		const destination = 'Los Angeles';
-
+	const GetDropOffCoordinates = (destination) => {
 		//fetch to call api
 		fetch(
 			`https://api.mapbox.com/geocoding/v5/mapbox.places/${destination}.json?` +
@@ -41,17 +43,18 @@ const Confirm = () => {
 	};
 
 	useEffect(() => {
-		GetPickUpCoordinates();
-		GetDropOffCoordinates();
-	}, []);
+		GetPickUpCoordinates(pickup);
+		GetDropOffCoordinates(destination);
+	}, [pickup, destination]);
 
 	return (
 		<Wrapper>
 			<Map pickupCoordinates={pickupCoordinates} destinationCoordinates={destinationCoordinates} />
 			<RideContainer>
-				Ride selector Confirm button
-				{/* {pickupCoordinates}
-				{destinationCoordinates} */}
+				<RideSelector />
+				<ConfirmButtonContainer>
+					<ConfirmButton>Confirm UberX</ConfirmButton>
+				</ConfirmButtonContainer>
 			</RideContainer>
 		</Wrapper>
 	);
@@ -64,5 +67,13 @@ flex h-screen flex-col
 `;
 
 const RideContainer = tw.div`
-flex-1
+flex-1 flex flex-col h-1/2
 `;
+
+const ConfirmButtonContainer = tw.div`
+border-t-2
+`;
+
+const ConfirmButton = tw.div`
+bg-black text-white my-4 mx-4 py-4 text-center text-xl
+ `;

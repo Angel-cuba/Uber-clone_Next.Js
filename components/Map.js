@@ -22,6 +22,12 @@ const Map = ({ pickupCoordinates, destinationCoordinates }) => {
 		if (destinationCoordinates) {
 			addToMap(map, destinationCoordinates);
 		}
+		//Zoom into markers
+		if ((pickupCoordinates, destinationCoordinates)) {
+			map.fitBounds([destinationCoordinates, pickupCoordinates], {
+				padding: 60,
+			});
+		}
 	}, [pickupCoordinates, destinationCoordinates]);
 
 	const addToMap = (map, coordinates) => {
@@ -39,5 +45,5 @@ const Map = ({ pickupCoordinates, destinationCoordinates }) => {
 export default Map;
 
 const Wrapper = tw.div`
-	flex-1
+	flex-1 h-1/2
 `;
