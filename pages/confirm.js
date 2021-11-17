@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import tw from 'tailwind-styled-components';
-import Map from '../components/Map';
-import RideSelector from '../components/RideSelector';
+import Map from './components/Map';
+import RideSelector from './components/RideSelector';
 //Location for query address
 import { useRouter } from 'next/router';
 
@@ -9,8 +9,8 @@ const Confirm = () => {
 	const router = useRouter();
 	const { pickup, destination } = router.query;
 
-	const [pickupCoordinates, setPickupCoordinates] = useState();
-	const [destinationCoordinates, setDestinationCoordinates] = useState();
+	const [pickupCoordinates, setPickupCoordinates] = useState([0, 0]);
+	const [destinationCoordinates, setDestinationCoordinates] = useState([0, 0]);
 
 	const GetPickUpCoordinates = (pickup) => {
 		//fetch to call api
@@ -51,7 +51,10 @@ const Confirm = () => {
 		<Wrapper>
 			<Map pickupCoordinates={pickupCoordinates} destinationCoordinates={destinationCoordinates} />
 			<RideContainer>
-				<RideSelector />
+				<RideSelector
+					pickupCoordinates={pickupCoordinates}
+					destinationCoordinates={destinationCoordinates}
+				/>
 				<ConfirmButtonContainer>
 					<ConfirmButton>Confirm UberX</ConfirmButton>
 				</ConfirmButtonContainer>

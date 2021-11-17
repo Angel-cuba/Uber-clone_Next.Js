@@ -1,5 +1,5 @@
 import tw from 'tailwind-styled-components';
-import Map from '../components/Map';
+import Map from '../pages/components/Map';
 import Link from 'next/link';
 
 export default function Home() {
