@@ -10,7 +10,7 @@ const Confirm = () => {
 	const router = useRouter();
 	const { pickup, destination } = router.query;
 
-	const [pickupCoordinates, setPickupCoordinates] = useState([0, 0]);
+	const [pickupCoordinates, setPickupCoordinates] = useState([-81.9971, 28.0233]);
 	const [destinationCoordinates, setDestinationCoordinates] = useState([-98.525, 41.5491]);
 
 	const GetPickUpCoordinates = (pickup) => {
