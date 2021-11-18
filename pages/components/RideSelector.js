@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useLayoutEffect } from 'react';
 import tw from 'tailwind-styled-components';
 const carList = [
 	{
@@ -39,7 +39,7 @@ function RideSelector({ pickupCoordinates, destinationCoordinates }) {
 	const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${pickupCoordinates[0]},${pickupCoordinates[1]};${destinationCoordinates[0]}, ${destinationCoordinates[1]}?access_token=${access_token}`;
 
 	// setRideDuration(data.routes[0].duration / 100)
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const Get = async () => {
 			await fetch(url)
 				.then((response) => response.json())
