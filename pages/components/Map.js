@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import tw from 'tailwind-styled-components';
 import mapboxgl from '!mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 mapboxgl.accessToken =
 	'pk.eyJ1IjoiYW5nZWxjdWJhZmlubGFuZGlhIiwiYSI6ImNrdm13M2F4ajlraTQyb3M3M3R4dHU5czIifQ.BXzxXHExlRbDWwmZ3WxJhw';
@@ -11,7 +12,7 @@ const Map = ({ pickupCoordinates, destinationCoordinates }) => {
 		//if (map.current) return; // initialize map only once
 		const map = new mapboxgl.Map({
 			container: 'map',
-			style: 'mapbox://styles/mapbox/streets-v11',
+			style: 'mapbox://styles/drakosi/ckvcwq3rwdw4314o3i2ho8tph',
 			//center: [60.192059, 24.945831],
 			center: [-99.29011, 39.39172], //USA
 			zoom: 3,

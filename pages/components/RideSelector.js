@@ -10,17 +10,18 @@ function RideSelector({ pickupCoordinates, destinationCoordinates }) {
 	const access_token =
 		'pk.eyJ1IjoiYW5nZWxjdWJhZmlubGFuZGlhIiwiYSI6ImNrdm13M2F4ajlraTQyb3M3M3R4dHU5czIifQ.BXzxXHExlRbDWwmZ3WxJhw';
 	const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${pickupCoordinates[0]},${pickupCoordinates[1]};${destinationCoordinates[0]}, ${destinationCoordinates[1]}?access_token=${access_token}`;
-	const Get = async () => {
-		await fetch(url)
-			.then((response) => response.json())
-			.then((data) => setRideDuration(data.routes[0].duration / 100))
-			.catch((error) => console.log(error.message));
-	};
 
 	// setRideDuration(data.routes[0].duration / 100)
 	useEffect(() => {
+		const Get = async () => {
+			await fetch(url)
+				.then((response) => response.json())
+				.then((data) => setRideDuration(data.routes[0].duration / 100))
+				.catch((error) => console.log(error.message));
+		};
 		Get();
 	}, [pickupCoordinates, destinationCoordinates]);
+	// url
 
 	return (
 		<Wrapper>
