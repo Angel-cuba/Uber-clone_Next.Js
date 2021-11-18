@@ -15,6 +15,10 @@ const Map = ({ pickupCoordinates, destinationCoordinates }) => {
 			style: 'mapbox://styles/drakosi/ckvcwq3rwdw4314o3i2ho8tph',
 			//center: [60.192059, 24.945831],
 			center: [-99.29011, 39.39172], //USA
+			transition: {
+				duration: 300,
+				delay: 2,
+			},
 			zoom: 3,
 		});
 		if (pickupCoordinates) {
