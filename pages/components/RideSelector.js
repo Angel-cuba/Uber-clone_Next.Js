@@ -29,8 +29,8 @@ const carList = [
 ];
 
 function RideSelector({ pickupCoordinates, destinationCoordinates }) {
-	const [rideDuration, setRideDuration] = useState(0);
-	const [distance, setDistance] = useState(0);
+	const [rideDuration, setRideDuration] = useState(1);
+	const [distance, setDistance] = useState(1);
 	// console.log('rideDuration', rideDuration);
 
 	//get ride duration from MapBox API
