@@ -11,7 +11,7 @@ const Confirm = () => {
 	const { pickup, destination } = router.query;
 
 	const [pickupCoordinates, setPickupCoordinates] = useState([0, 0]);
-	const [destinationCoordinates, setDestinationCoordinates] = useState([0, 0]);
+	const [destinationCoordinates, setDestinationCoordinates] = useState([-98.525, 41.5491]);
 
 	const GetPickUpCoordinates = (pickup) => {
 		//fetch to call api
