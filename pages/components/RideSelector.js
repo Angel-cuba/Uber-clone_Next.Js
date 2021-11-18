@@ -20,7 +20,7 @@ function RideSelector({ pickupCoordinates, destinationCoordinates }) {
 				.catch((error) => console.log(error.message));
 		};
 		Get();
-	}, [pickupCoordinates, destinationCoordinates]);
+	}, [pickupCoordinates, destinationCoordinates, url]);
 	// url
 
 	return (
