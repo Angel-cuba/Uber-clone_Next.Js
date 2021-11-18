@@ -30,7 +30,8 @@ const carList = [
 
 function RideSelector({ pickupCoordinates, destinationCoordinates }) {
 	const [rideDuration, setRideDuration] = useState(0);
-	console.log('rideDuration', rideDuration);
+	const [distance, setDistance] = useState(0);
+	// console.log('rideDuration', rideDuration);
 
 	//get ride duration from MapBox API
 	const access_token =
@@ -42,7 +43,12 @@ function RideSelector({ pickupCoordinates, destinationCoordinates }) {
 		const Get = async () => {
 			await fetch(url)
 				.then((response) => response.json())
-				.then((data) => setRideDuration(data.routes[0].duration / 100))
+				.then(
+					(data) =>
+						setRideDuration(data.routes[0].duration / 3600) +
+						setDistance(data.routes[0].distance) +
+						console.log(data)
+				)
 				.catch((error) => console.log(error.message));
 		};
 		Get();
@@ -58,8 +64,11 @@ function RideSelector({ pickupCoordinates, destinationCoordinates }) {
 						<CarImage src={car.imgUrl} />
 						<CarDetails>
 							<Service>{car.service}</Service>
-
-							<Time>5 min away</Time>
+							<Time>Time around {rideDuration.toFixed(0)} hours</Time>
+							<Distance>
+								<Text>Distance:</Text>
+								{(distance / 1000).toFixed(2)} km
+							</Distance>
 						</CarDetails>
 						<Price>{'£ ' + (rideDuration * car.multiplier).toFixed(2)}</Price>
 					</Car>
@@ -102,7 +111,11 @@ font-medium
 const Time = tw.div`
 text-xs text-blue-500
 `;
+const Distance = tw.div`
+text-xl text-blue-900 flex `;
 
 const Price = tw.div`
 text-sm
 `;
+const Text = tw.div`
+px-4`;
