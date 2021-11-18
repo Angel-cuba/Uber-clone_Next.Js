@@ -7,7 +7,6 @@ mapboxgl.accessToken =
 	'pk.eyJ1IjoiYW5nZWxjdWJhZmlubGFuZGlhIiwiYSI6ImNrdm13M2F4ajlraTQyb3M3M3R4dHU5czIifQ.BXzxXHExlRbDWwmZ3WxJhw';
 
 const Map = ({ pickupCoordinates, destinationCoordinates }) => {
-	console.log(pickupCoordinates, destinationCoordinates);
 	useEffect(() => {
 		//if (map.current) return; // initialize map only once
 		const map = new mapboxgl.Map({
