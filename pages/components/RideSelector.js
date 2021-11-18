@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import tw from 'tailwind-styled-components';
-// import { carList } from '../data/carList';
 const carList = [
 	{
 		imgUrl: 'https://i.ibb.co/cyvcpfF/uberx.png',
